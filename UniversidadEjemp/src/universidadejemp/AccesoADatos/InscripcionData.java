@@ -54,5 +54,69 @@ public class InscripcionData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Inscripción: " + ex.getMessage());
         }
         return inscripciones;
+    } 
+    public List<Inscripcion> obtenerInscripcionesPorAlumno(int idAlumno) {
+        List<Inscripcion> inscripciones = new ArrayList<>();
+        String sql = "SELECT * FROM inscripcion WHERE idAlumno = ?";
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, idAlumno);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Inscripcion inscripcion = new Inscripcion();
+                inscripcion.setIdInscripcion(rs.getInt("idInscripcion"));
+                inscripcion.setNota(rs.getDouble("nota"));
+
+                Alumno alumno = new AlumnoData().buscarAlumno(rs.getInt("idAlumno"));
+                inscripcion.setAlumno(alumno);
+
+                Materia materia = new MateriaData().buscarMateria(rs.getInt("idMateria"));
+                inscripcion.setMateria(materia);
+
+                inscripciones.add(inscripcion);
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Inscripción: " + ex.getMessage());
+        }
+        return inscripciones;
+    }
+
+    public List<Materia> obtenerMateriasCursadas(int idAlumno) {
+        List<Materia> materias = new ArrayList<>();
+        String sql = "SELECT m.* FROM inscripcion i JOIN materia m ON i.idMateria = m.idMateria WHERE i.idAlumno = ?";
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, idAlumno);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Materia materia = new Materia();
+                materia.setIdMateria(rs.getInt("idMateria"));
+                materia.setNombre(rs.getString("nombre"));
+                materia.setAño(rs.getInt("año"));
+                materia.setEstado(rs.getBoolean("estado"));
+                materias.add(materia);
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Materia: " + ex.getMessage());
+        }
+        return materias;
+    }
+
+    public List<Materia> obtenerMateriasNoCursadas(int idAlumno) {
+        List<Materia> materias = new ArrayList<>();
+        String sql = "SELECT * FROM materia WHERE idMateria NOT IN (SELECT idMateria FROM inscripcion WHERE idAlumno = ?)";
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, idAlumno);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Materia materia = new Materia();
+                materia.setIdMateria(rs.getInt("idMateria"));
+                materia.setNombre(rs.getString("nombre"));
+                materia.setAño(rs.getInt("año"));
+                materia.setEstado(rs.getBoolean("estado"));
+                materias.add(materia);
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Materia: " + ex.getMessage());
+        }
+        return materias;
     }
 }

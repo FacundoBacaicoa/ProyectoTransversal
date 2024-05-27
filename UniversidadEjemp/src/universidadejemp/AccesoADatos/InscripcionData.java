@@ -66,7 +66,7 @@ public class InscripcionData {
                 inscripcion.setIdInscripcion(rs.getInt("idInscripcion"));
                 inscripcion.setNota(rs.getDouble("nota"));
 
-                Alumno alumno = new AlumnoData().buscarAlumno(rs.getInt("idAlumno"));
+                Alumno alumno = new AlumnoData().buscarAlumnoPorid(rs.getInt("idAlumno"));
                 inscripcion.setAlumno(alumno);
 
                 Materia materia = new MateriaData().buscarMateria(rs.getInt("idMateria"));
@@ -90,7 +90,7 @@ public class InscripcionData {
                 Materia materia = new Materia();
                 materia.setIdMateria(rs.getInt("idMateria"));
                 materia.setNombre(rs.getString("nombre"));
-                materia.setAño(rs.getInt("año"));
+                materia.setAnioMateria(rs.getInt("año"));
                 materia.setEstado(rs.getBoolean("estado"));
                 materias.add(materia);
             }
@@ -110,7 +110,7 @@ public class InscripcionData {
                 Materia materia = new Materia();
                 materia.setIdMateria(rs.getInt("idMateria"));
                 materia.setNombre(rs.getString("nombre"));
-                materia.setAño(rs.getInt("año"));
+                materia.setAnioMateria(rs.getInt("año"));
                 materia.setEstado(rs.getBoolean("estado"));
                 materias.add(materia);
             }
@@ -162,7 +162,7 @@ public class InscripcionData {
                 alumno.setDni(rs.getInt("dni"));
                 alumno.setApellido(rs.getString("apellido"));
                 alumno.setNombre(rs.getString("nombre"));
-                alumno.setFechaNacimiento(rs.getDate("fechaNacimiento").toLocalDate());
+                alumno.setFechaNac(rs.getDate("fechaNacimiento").toLocalDate());
                 alumno.setEstado(rs.getBoolean("estado")); // Cambiado de activo a estado
                 alumnos.add(alumno);
             }

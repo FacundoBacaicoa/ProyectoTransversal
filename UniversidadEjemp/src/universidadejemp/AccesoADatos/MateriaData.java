@@ -88,4 +88,18 @@ public class MateriaData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Materia: " + ex.getMessage());
         }
     }
+    
+        public void eliminarMateria(int id) {
+        String sql = "UPDATE materia SET estado = 0 WHERE idMateria = ?";
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, id);
+            int fila = ps.executeUpdate();
+            if (fila == 1) {
+                JOptionPane.showMessageDialog(null, "Materia eliminada con éxito.");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Materia: " + ex.getMessage());
+        }
+    }
+    
     }

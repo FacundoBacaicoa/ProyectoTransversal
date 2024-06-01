@@ -91,6 +91,11 @@ public class ConsultaDeAlumnosPorMateria extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
+
         jLabel1.setText("Seleccione una Materia:");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "" }));

@@ -34,6 +34,7 @@ public class Main extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuItem2 = new javax.swing.JMenuItem();
         ImageIcon icono=new ImageIcon (getClass().getResource("/universidadejemp/Recursos/ulpfondo.jpg"));
         Image fondo=icono.getImage();
         escritorio = new javax.swing.JDesktopPane(){
@@ -44,11 +45,17 @@ public class Main extends javax.swing.JFrame {
         };
         jMenuBar1 = new javax.swing.JMenuBar();
         jmAlumnos = new javax.swing.JMenu();
+        jmFormAlumno = new javax.swing.JMenuItem();
         jmMaterias = new javax.swing.JMenu();
         jmFormMaterias = new javax.swing.JMenuItem();
+        jmConsultaAlum = new javax.swing.JMenuItem();
         jmInscripcion = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jmNotas = new javax.swing.JMenu();
+        jmManipulacionNotas = new javax.swing.JMenuItem();
         jmSalir = new javax.swing.JMenu();
+
+        jMenuItem2.setText("jMenuItem2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -56,7 +63,7 @@ public class Main extends javax.swing.JFrame {
         escritorio.setLayout(escritorioLayout);
         escritorioLayout.setHorizontalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 624, Short.MAX_VALUE)
+            .addGap(0, 639, Short.MAX_VALUE)
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -74,6 +81,15 @@ public class Main extends javax.swing.JFrame {
                 jmAlumnosActionPerformed(evt);
             }
         });
+
+        jmFormAlumno.setText("Formulario de Alumno");
+        jmFormAlumno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmFormAlumnoActionPerformed(evt);
+            }
+        });
+        jmAlumnos.add(jmFormAlumno);
+
         jMenuBar1.add(jmAlumnos);
 
         jmMaterias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/universidadejemp/Recursos/libros.png"))); // NOI18N
@@ -92,14 +108,45 @@ public class Main extends javax.swing.JFrame {
         });
         jmMaterias.add(jmFormMaterias);
 
+        jmConsultaAlum.setText("Consulta de Alumnos por Materia");
+        jmConsultaAlum.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmConsultaAlumActionPerformed(evt);
+            }
+        });
+        jmMaterias.add(jmConsultaAlum);
+
         jMenuBar1.add(jmMaterias);
 
         jmInscripcion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/universidadejemp/Recursos/contrato.png"))); // NOI18N
         jmInscripcion.setText("Inscripción");
+        jmInscripcion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmInscripcionActionPerformed(evt);
+            }
+        });
+
+        jMenuItem1.setText("Manejo de Inscripcione");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jmInscripcion.add(jMenuItem1);
+
         jMenuBar1.add(jmInscripcion);
 
         jmNotas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/universidadejemp/Recursos/notas.png"))); // NOI18N
         jmNotas.setText("Notas");
+
+        jmManipulacionNotas.setText("Manipulacion de Notas");
+        jmManipulacionNotas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmManipulacionNotasActionPerformed(evt);
+            }
+        });
+        jmNotas.add(jmManipulacionNotas);
+
         jMenuBar1.add(jmNotas);
 
         jmSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/universidadejemp/Recursos/cerrar-sesion.png"))); // NOI18N
@@ -116,15 +163,15 @@ public class Main extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(escritorio, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(escritorio)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jmAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmAlumnosActionPerformed
-escritorio.removeAll();
-escritorio.repaint();
+        escritorio.removeAll();
+        escritorio.repaint();
 
 
     }//GEN-LAST:event_jmAlumnosActionPerformed
@@ -139,9 +186,49 @@ escritorio.repaint();
         escritorio.repaint();
         GestionMaterias form = new GestionMaterias();
         form.setVisible(true);
-        form.getContentPane().setBackground(new Color(87,149,221));
+        form.getContentPane().setBackground(new Color(87, 149, 221));
         escritorio.add(form);
     }//GEN-LAST:event_jmFormMateriasActionPerformed
+
+    private void jmFormAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmFormAlumnoActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        GestionAlumnos formAlumno = new GestionAlumnos();
+        formAlumno.setVisible(true);
+        formAlumno.getContentPane().setBackground(new Color(87, 149, 221));
+        escritorio.add(formAlumno);
+    }//GEN-LAST:event_jmFormAlumnoActionPerformed
+
+    private void jmConsultaAlumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmConsultaAlumActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        ConsultaDeAlumnosPorMateria consultaAlumno = new ConsultaDeAlumnosPorMateria();
+        consultaAlumno.setVisible(true);
+        consultaAlumno.getContentPane().setBackground(new Color(87, 149, 221));
+        escritorio.add(consultaAlumno);
+    }//GEN-LAST:event_jmConsultaAlumActionPerformed
+
+    private void jmInscripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmInscripcionActionPerformed
+
+    }//GEN-LAST:event_jmInscripcionActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        FormularioInscripcion formInscripcion = new FormularioInscripcion();
+        formInscripcion.setVisible(true);
+        formInscripcion.getContentPane().setBackground(new Color(87, 149, 221));
+        escritorio.add(formInscripcion);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jmManipulacionNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmManipulacionNotasActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        Cargadenotas notas = new Cargadenotas();
+        notas.setVisible(true);
+        notas.getContentPane().setBackground(new Color(87, 149, 221));
+        escritorio.add(notas);
+    }//GEN-LAST:event_jmManipulacionNotasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -182,9 +269,14 @@ escritorio.repaint();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane escritorio;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenu jmAlumnos;
+    private javax.swing.JMenuItem jmConsultaAlum;
+    private javax.swing.JMenuItem jmFormAlumno;
     private javax.swing.JMenuItem jmFormMaterias;
     private javax.swing.JMenu jmInscripcion;
+    private javax.swing.JMenuItem jmManipulacionNotas;
     private javax.swing.JMenu jmMaterias;
     private javax.swing.JMenu jmNotas;
     private javax.swing.JMenu jmSalir;

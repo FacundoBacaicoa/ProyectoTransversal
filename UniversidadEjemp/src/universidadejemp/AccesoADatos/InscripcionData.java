@@ -119,11 +119,11 @@ public class InscripcionData {
         }
         return materias;
     }
-    public void borrarInscripcion(Inscripcion inscripcion) {
+    public void borrarInscripcion(int idAlumno, int idMateria) {
         String sql = "DELETE FROM inscripcion WHERE idAlumno = ? AND idMateria = ?";
         try (PreparedStatement ps = con.prepareStatement(sql)) {
-            ps.setInt(1, inscripcion.getAlumno().getIdAlumno());
-            ps.setInt(2, inscripcion.getMateria().getIdMateria());
+            ps.setInt(1, idAlumno);
+            ps.setInt(2, idMateria);
             int filas = ps.executeUpdate();
             if (filas == 1) {
                 JOptionPane.showMessageDialog(null, "Inscripción eliminada con éxito.");

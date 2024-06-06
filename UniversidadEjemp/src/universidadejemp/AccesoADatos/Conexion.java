@@ -1,9 +1,7 @@
-
 package universidadejemp.AccesoADatos;
 
-
 import javax.swing.JOptionPane;
-import org.mariadb.jdbc.Connection;
+import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
@@ -27,19 +25,15 @@ public class Conexion {
             try {
                 Class.forName("org.mariadb.jdbc.Driver");
                 connection = (Connection) DriverManager.getConnection(URL + DB, USUARIO, PASSWORD);
-                 
-               JOptionPane.showMessageDialog(null, "Conectado");
+                JOptionPane.showMessageDialog(null, "Conectado");
             } catch (ClassNotFoundException ex) {
-                JOptionPane.showMessageDialog(null, "Error al cargar los drivers");
-
+                JOptionPane.showMessageDialog(null, "Error al cargar los drivers: " + ex.getMessage());
+                ex.printStackTrace();
             } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, "Error al conectarse a la base");
-                
+                JOptionPane.showMessageDialog(null, "Error al conectarse a la base: " + ex.getMessage());
+                ex.printStackTrace();
             }
-
         }
-         return connection;
+        return connection;
     }
 }
-   
-

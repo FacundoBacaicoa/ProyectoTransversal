@@ -1,7 +1,7 @@
 package universidadejemp;
 
 import java.time.LocalDate;
-import org.mariadb.jdbc.Connection;
+import java.sql.Connection;
 import universidadejemp.AccesoADatos.AlumnoData;
 import universidadejemp.AccesoADatos.Conexion;
 import universidadejemp.Entidades.Alumno;

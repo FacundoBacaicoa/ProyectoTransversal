@@ -1,8 +1,8 @@
 package universidadejemp.AccesoADatos;
-
+import java.sql.Connection;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
-import org.mariadb.jdbc.Connection;
+
 import org.mariadb.jdbc.Statement;
 import java.sql.PreparedStatement;
 import java.sql.Date;

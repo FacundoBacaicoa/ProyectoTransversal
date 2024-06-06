@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package universidadejemp.Entidades;
 
 /**
@@ -9,7 +5,7 @@ package universidadejemp.Entidades;
  * @author facun
  */
 public class Inscripcion {
-    private int idInscripcion;
+    private int idInscripto;  // Cambiar a idInscripto
     private Alumno alumno;
     private Materia materia;
     private double nota;
@@ -17,8 +13,8 @@ public class Inscripcion {
     public Inscripcion() {
     }
 
-    public Inscripcion(int idInscripcion, Alumno alumno, Materia materia, double nota) {
-        this.idInscripcion = idInscripcion;
+    public Inscripcion(int idInscripto, Alumno alumno, Materia materia, double nota) {  // Cambiar a idInscripto
+        this.idInscripto = idInscripto;  // Cambiar a idInscripto
         this.alumno = alumno;
         this.materia = materia;
         this.nota = nota;
@@ -30,12 +26,12 @@ public class Inscripcion {
         this.nota = nota;
     }
 
-    public int getIdInscripcion() {
-        return idInscripcion;
+    public int getIdInscripto() {  // Cambiar a idInscripto
+        return idInscripto;  // Cambiar a idInscripto
     }
 
-    public void setIdInscripcion(int idInscripcion) {
-        this.idInscripcion = idInscripcion;
+    public void setIdInscripto(int idInscripto) {  // Cambiar a idInscripto
+        this.idInscripto = idInscripto;  // Cambiar a idInscripto
     }
 
     public Alumno getAlumno() {
@@ -64,10 +60,7 @@ public class Inscripcion {
 
     @Override
     public String toString() {
-        String insc=idInscripcion+ " " +alumno.getApellido() + " " +alumno.getNombre() + " " + materia.getNombre();
-       return insc;
+        String insc = idInscripto + " " + alumno.getApellido() + " " + alumno.getNombre() + " " + materia.getNombre();
+        return insc;
     }
-
-    
-    
 }

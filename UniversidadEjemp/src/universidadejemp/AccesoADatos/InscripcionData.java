@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
+
 public class InscripcionData {
     private Connection con = null;
 
@@ -25,7 +26,7 @@ public class InscripcionData {
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
-                inscripcion.setIdInscripcion(rs.getInt(1));
+                inscripcion.setIdInscripto(rs.getInt(1));  // Cambiado a idInscripto
                 JOptionPane.showMessageDialog(null, "Inscripción añadida con éxito.");
             }
         } catch (SQLException ex) {
@@ -39,7 +40,7 @@ public class InscripcionData {
         try (PreparedStatement ps = con.prepareStatement(sql); ResultSet rs = ps.executeQuery()) {
             while (rs.next()) {
                 Inscripcion inscripcion = new Inscripcion();
-                inscripcion.setIdInscripcion(rs.getInt("idInscripcion"));
+                inscripcion.setIdInscripto(rs.getInt("idInscripto"));  // Cambiado a idInscripto
                 inscripcion.setNota(rs.getDouble("nota"));
 
                 Alumno alumno = new AlumnoData().buscarAlumnoPorid(rs.getInt("idAlumno"));
@@ -54,7 +55,8 @@ public class InscripcionData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Inscripción: " + ex.getMessage());
         }
         return inscripciones;
-    } 
+    }
+
     public List<Inscripcion> obtenerInscripcionesPorAlumno(int idAlumno) {
         List<Inscripcion> inscripciones = new ArrayList<>();
         String sql = "SELECT * FROM inscripcion WHERE idAlumno = ?";
@@ -63,7 +65,7 @@ public class InscripcionData {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Inscripcion inscripcion = new Inscripcion();
-                inscripcion.setIdInscripcion(rs.getInt("idInscripcion"));
+                inscripcion.setIdInscripto(rs.getInt("idInscripto"));  // Cambiado a idInscripto
                 inscripcion.setNota(rs.getDouble("nota"));
 
                 Alumno alumno = new AlumnoData().buscarAlumnoPorid(rs.getInt("idAlumno"));
